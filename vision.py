@@ -15,37 +15,37 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Hanldes the GET request, sends to vision method and returns a response formatted
     for Chatfuel
     """
-    def do_GET(s):
-        print(s.path)
+    def do_GET(self):
+        print(self.path)
 
-        description = s.vision()
-        s.send_response(200)
-        s.send_header("Content-type", "text/json")
-        s.end_headers()
-        s.wfile.write(str.encode("{\"messages\" : ["))
-        s.wfile.write(str.encode("{\"text\" : \" this is " + description +"\" }"))
-        s.wfile.write(str.encode("]}"))
+        description = self.vision()
+        self.send_response(200)
+        self.send_header("Content-type", "text/json")
+        self.end_headers()
+        self.wfile.write(str.encode("{\"messages\" : ["))
+        self.wfile.write(str.encode("{\"text\" : \" this is " + description +"\" }"))
+        self.wfile.write(str.encode("]}"))
         return
 
     """
     Gets the image path from the url and makes an api requset, parses
     JSON response and returns
     """
-    def vision(s):
+    def vision(self):
         print("we're doing vision checks")
-        image_url = s.get_param_from_url("image")
+        image_url = self.get_param_from_url("image")
         params = urllib.parse.urlencode({
             'visualFeatures': 'Description',
             'language': 'en',
         })
         body = "{'url':'" + image_url + "'}"
-        returned = s.make_api_request(params, body)
+        returned = self.make_api_request(params, body)
         return returned['description']['captions'][0]['text']
 
     """    
     Method to send an API Requset to Azure 
     """
-    def make_api_request(s, params, body):
+    def make_api_request(self, params, body):
         subscription_key = 'SUBSCRIPTION_KEY'
         headers = {
          'Content-Type': 'application/json',
@@ -59,10 +59,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         conn.close()
         return parsed
 
-    def get_param_from_url(s, param_name):
-        queryStarts = s.path.find("?") + 1
+    def get_param_from_url(self, param_name):
+        queryStarts = self.path.find("?") + 1
         from urllib.parse import parse_qs
-        parsed = parse_qs(s.path[queryStarts:])
+        parsed = parse_qs(self.path[queryStarts:])
         return parsed[param_name][0]
 
 
