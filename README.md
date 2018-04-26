@@ -7,9 +7,6 @@ We also have a getting started guide to help you with setting up your computer a
 ## Examples
 We have several examples for you to look at:
 
-* Facial Recognition ([face.py](https://github.com/Sage/future_makers/blob/master/face.py))
-* Search (using Bing) ([search.py](https://github.com/Sage/future_makers/blob/master/search.py))
-* Text Analytics ([text_analytics.py](https://github.com/Sage/future_makers/blob/master/text_analytics.py))
 * Translation ([text_analytics.py](https://github.com/Sage/future_makers/blob/master/translation.py))
 * Vision ([vision.py](https://github.com/Sage/future_makers/blob/master/vision.py))
 
@@ -22,20 +19,12 @@ We have several examples for you to look at:
 
 ### Running the examples
 1. Double-click on any file you are interested in
-1. Sign up for the service using the link at the top of the source code file
-1. Find your subscription keys (under Resource Management in the Azure Portal)
+1. You'll need a subscription key, one of the Sage volunteers will be able to provide you with one 
 1. Replace the placeholder **SUBSCRIPTION_KEY** in the source code file (within the make_api_request method)
 1. Click the Debug menu (at the top) and choose Start Debugging -> Python
 
-## Prerequisites
-### Azure
-All examples use Microsoft's Azure services
-
-1. Sign up for a free Azure account
-1. Create any cognitive services (using the link at the top of the source code file)
-
 ### Ngrok
-Ngrok provides a tunnel to your local machine so that it can receive messages from the internet.
+Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to run this to be able to connect Chatfuel to the code running on your machine.
 
 1. Download this [zip file](https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip) to your desktop
 1. Double-click on the zip file
