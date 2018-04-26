@@ -14,7 +14,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """
     Server GET method
     """
-    def do_GET(s):
+    def do_GET(self):
   
         return
     
@@ -22,7 +22,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """    
     Method to send an API Requset to Azure 
     """
-    def make_api_request(s, params, body):
+    def make_api_request(self, params, body):
         subscription_key = 'SUBSCRIPTION_KEY'
         headers = {
          'Content-Type': 'application/json',
@@ -41,10 +41,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """
     Helper method to pull a param from a URL
     """
-    def get_param_from_url(s, param_name):
-        queryStarts = s.path.find("?") + 1
+    def get_param_from_url(self, param_name):
+        queryStarts = self.path.find("?") + 1
         from urllib.parse import parse_qs
-        parsed = parse_qs(s.path[queryStarts:])
+        parsed = parse_qs(self.path[queryStarts:])
         return parsed[param_name][0]
 
 
