@@ -59,6 +59,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         conn.close()
         return parsed
 
+    """
+    Helper method to pull a param from a URL
+    """
     def get_param_from_url(self, param_name):
         queryStarts = self.path.find("?") + 1
         from urllib.parse import parse_qs
