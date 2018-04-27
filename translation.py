@@ -35,7 +35,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     JSON response and returns
     """
     def translate(self):
-        print("we're doing translation")
+        print("We're doing translation")
         text = self.get_param_from_url("text")
         lang = self.get_param_from_url("lang")
         returned = self.make_api_request(text, lang)
