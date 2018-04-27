@@ -1,4 +1,5 @@
 # Translation API - https://azure.microsoft.com/en-gb/services/cognitive-services/translator-text-api/
+# Example Request - http://localhost:3001/?lang=fr&text=hello
 
 import http.server
 import socketserver
@@ -30,7 +31,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return
 
     """
-    Gets the image path from the url and makes an api requset, parses
+    Gets the image path from the url and makes an api request, parses
     JSON response and returns
     """
     def translate(self):
@@ -41,7 +42,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return returned
 
     """    
-    Method to send an API Requset to Azure 
+    Method to send an API Request to Azure 
     """
     def make_api_request(self, text, lang):
         subscriptionKey = 'SUBSCRIPTION_KEY'

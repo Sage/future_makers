@@ -21,7 +21,9 @@ We have several examples for you to look at:
 1. Double-click on any file you are interested in
 1. You'll need a subscription key, one of the Sage volunteers will be able to provide you with one 
 1. Replace the placeholder **SUBSCRIPTION_KEY** in the source code file (within the make_api_request method)
+1. You may also have to change the host name (eg westcentralus.api.cognitive.microsoft.com) to match your Azure service
 1. Click the Debug menu (at the top) and choose Start Debugging -> Python
+1. Optional - try setting a breakpoint
 
 ### Ngrok
 Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to run this to be able to connect Chatfuel to the code running on your machine.
