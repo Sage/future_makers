@@ -9,7 +9,7 @@ We have several examples for you to look at:
 
 * Translation ([text_analytics.py](https://github.com/Sage/future_makers/blob/master/translation.py))
 * Vision ([vision.py](https://github.com/Sage/future_makers/blob/master/vision.py))
-* Face Detection ([vision.py](https://github.com/Sage/future_makers/blob/master/face.py))
+* Face Detection ([face.py](https://github.com/Sage/future_makers/blob/master/face.py))
 
 ### Getting the examples
 1. Download this [zip file](https://github.com/Sage/future_makers/archive/master.zip) to your desktop
