@@ -5,7 +5,7 @@
 import ssl
 import http.server
 import socketserver
-from os import environ
+from constants import subscription_key
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -53,7 +53,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = environ.get('KEY')
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,

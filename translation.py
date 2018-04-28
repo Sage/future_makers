@@ -4,8 +4,8 @@
 import ssl
 import http.server
 import socketserver
-from os import environ
 from xml.etree import ElementTree
+from constants import subscription_key
 import http.client, urllib.request, urllib.parse
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -44,7 +44,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, text, lang):
-        subscription_key = environ.get('KEY')
 
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
