@@ -2,11 +2,9 @@
 # Sample Image - https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350
 # Example Request - http://localhost:3001/?image=https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350
 
+import ssl
 import http.server
 import socketserver
-import urllib.parse
-import urllib.request
-import ssl
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
