@@ -10,7 +10,6 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-
 class Handler(http.server.SimpleHTTPRequestHandler):
 
     """
