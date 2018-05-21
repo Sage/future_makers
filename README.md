@@ -27,7 +27,7 @@ We have several examples for you to look at:
 1. Optional - try setting a breakpoint
 
 ### Ngrok
-Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to run this to be able to connect Chatfuel to the code running on your machine.
+Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to runs    this to be able to connect Chatfuel to the code running on your machine.
 
 1. Download this [zip file](https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip) to your desktop
 1. Double-click on the zip file
@@ -39,4 +39,6 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
 1. Run the two commands (**remove the ./ from the front**):
     * ngrok authtoken YOUR_AUTH_TOKEN_HERE
     * ngrok http 3001
+1. Run the command (**remove the ./ from the front**):
+    * ngrok.exe http 3001
 1. Leave the command open (you can minimise the window)
