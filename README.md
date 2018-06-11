@@ -1,11 +1,14 @@
-# Sage FutureMakers Code Examples
+# Sage FutureMakers
 
 Welcome the the Sage Future Makers Github repository.
+
+## Bot Examples
 
 To get started using some bots, take a look at these examples:
 
 * [Mitskuku](https://www.pandorabots.com/mitsuku/)
 
+## Code Examples
 
 This is where you'll find code examples to help with connecting your Snatchbot Chatbot with Microsoft's Congnitive Services. 
 
