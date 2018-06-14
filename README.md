@@ -7,6 +7,7 @@ Welcome the the Sage Future Makers Github repository.
 To get started using some bots, take a look at these examples:
 
 * [Mitskuku](https://www.pandorabots.com/mitsuku/)
+* [DoNotPay](https://www.donotpay.com/)
 
 ## Code Examples
 
