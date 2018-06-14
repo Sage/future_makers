@@ -81,8 +81,15 @@ Congratulations, you have now created your first ChatBot.
 
 ### Linking Interactions
 
+In order to build out your ChatBot you'll want to link interactions to one another. 
 
+![connectionwelcomemessage](https://user-images.githubusercontent.com/39263870/41417359-08bc872e-6fe5-11e8-9c33-37b46be5df29.png)
 
+In the Image above you can see that I've built out two more Bot Statements called "Step One" & "Step Two". Using the editing tools, specifically the connection section, on the "Welcome Message" I've set it up so that if the user was to reply "hello" to the welcome message it would advance to "Step One".
+
+![welcome-stepone](https://user-images.githubusercontent.com/39263870/41417853-634370bc-6fe6-11e8-8c82-7a121dd72427.png)
+
+Using this idea of connections its possible to build it the ChatBot and you can then include the other interactions that we spoke about earlier. 
 
 
 
