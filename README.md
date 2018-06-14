@@ -48,3 +48,11 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
 1. Run the command (**remove the ./ from the front**):
     * ngrok.exe http 3001
 1. Leave the command open (you can minimise the window)
+
+## SnatchBot
+[Snatchbot](https://snatchbot.me/) is the online software that we will be using to build and test the ChatBots. They have already built out documentation to help users with creating their own ChatBot, this can be found [here](https://support.snatchbot.me/docs). However, we have also given instructions below on how to complete some of the simpler tasks and as a quick guide. 
+
+### Creating your first Bot
+After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
+![Toolbar]
+
