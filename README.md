@@ -57,4 +57,10 @@ After setting up your account and logging in, you will be taken to the Dashboard
 
 ![toolbar](https://user-images.githubusercontent.com/39263870/41412687-b9863148-6fd8-11e8-85d2-096cec186528.png)
 
+1. Click on "My Bots"
+1. Click on "Create Bot"
+1. Name your Bot, give it a description (e.g. This ChatBot will guess a person's age based upon a picture of them) and also upload an image that best represents the use case of this ChatBot. You MUST use an image to be able to create a bot. After its creation you will be taken to this screen - 
+
+![newbotbuilt](https://user-images.githubusercontent.com/39263870/41413552-593eefa2-6fdb-11e8-9aa1-ca8e8c0c4b77.png)
+
 
