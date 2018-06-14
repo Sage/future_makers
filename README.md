@@ -54,6 +54,7 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
 
 ### Creating your first Bot
 After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
+
 ![toolbar](https://user-images.githubusercontent.com/39263870/41412687-b9863148-6fd8-11e8-85d2-096cec186528.png)
 
 
