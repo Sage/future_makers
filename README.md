@@ -7,6 +7,7 @@ Welcome the the Sage Future Makers Github repository.
 To get started using some bots, take a look at these examples:
 
 * [Mitskuku](https://www.pandorabots.com/mitsuku/)
+* [DoNotPay](https://www.donotpay.com/)
 
 ## Code Examples
 
@@ -47,3 +48,7 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
 1. Run the command (**remove the ./ from the front**):
     * ngrok.exe http 3001
 1. Leave the command open (you can minimise the window)
+
+## SnatchBot
+Click [this link](SnatchBot.md) to be taken to our guide on how to use SnatchBot, the online service we'll use today to build your own ChatBot.
+
