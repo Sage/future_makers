@@ -55,3 +55,21 @@ This function takes the response text from an Interaction that you specify by us
 ![interactionsdropdown](https://user-images.githubusercontent.com/39263870/41533623-5cbe718c-72f3-11e8-9cce-321b1a314937.png)
 
 The response data that is used will be the whole of the user's response. Within the command you can also see 'fallback=text', this is the text the user will recieve if something goes wrong, such as the ID being non-exsistent or there being no response. You should change it from 'TEXT' to something more appropriate like 'Sorry, something went wrong. We should start again'
+
+Example:
+
+Interaction ID 1: Hello! What is your name?  
+Interaction ID 2: Nice to meet you, [ResponseTo interaction=1 fallback=Something has gone wrong. Let’s start over].
+
+Result:
+
+Bot: Hello! What is your name?  
+User: Mary.  
+Bot: Nice to meet you, Mary.  
+
+Or
+
+Bot: Hello! What is your name?  
+User: %757!  
+Bot: Nice to meet you, Something has gone wrong. Let’s start over.  
+Bot: Hello! What is your name?  
