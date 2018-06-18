@@ -1,6 +1,11 @@
 ## SnatchBot
 [Snatchbot](https://snatchbot.me/) is the online software that we will be using to build and test the ChatBots. They have already built out documentation to help users with creating their own ChatBot, this can be found [here](https://support.snatchbot.me/docs). However, we have also given instructions below on how to complete some of the simpler tasks and as a quick guide. 
 
+We've broken the instructions down into three main areas
+
+[Getting Started](#Getting-Started)
+[User responses](#User-responses)
+
 ### Getting Started
 After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
 
