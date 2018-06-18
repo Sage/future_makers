@@ -80,6 +80,6 @@ User: %757!
 Bot: Nice to meet you, Something has gone wrong. Let’s start over.  
 Bot: Hello! What is your name?  
 
-###Connecting to an API
+### Connecting to an API
 
 
