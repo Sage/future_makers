@@ -1,12 +1,11 @@
 # Translation API - https://azure.microsoft.com/en-gb/services/cognitive-services/translator-text-api/
 # Example Request - http://localhost:3001/?lang=fr&text=hello
 
+import ssl
 import http.server
 import socketserver
-import urllib.parse
-import urllib.request
-import ssl
 from xml.etree import ElementTree
+from constants import subscription_key
 import http.client, urllib.request, urllib.parse
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -45,14 +44,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, text, lang):
-        subscriptionKey = 'SUBSCRIPTION_KEY'
 
         host = 'api.microsofttranslator.com'
         path = '/V2/Http.svc/Translate'
 
         params = '?to=' + lang + '&text=' + urllib.parse.quote(text)
 
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+        headers = {'Ocp-Apim-Subscription-Key': subscription_key}
         conn = http.client.HTTPSConnection(host)
         conn.request ("GET", path + params, None, headers)
         response = conn.getresponse ()

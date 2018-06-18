@@ -2,11 +2,10 @@
 # Sample Image - https://how-old.net/Images/faces2/main007.jpg
 # Example Request - http://localhost:3001/?image=https://how-old.net/Images/faces2/main007.jpg
 
+import ssl
 import http.server
 import socketserver
-import urllib.parse
-import urllib.request
-import ssl
+from constants import subscription_key
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -54,7 +53,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = 'SUBSCRIPTION_KEY'
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,

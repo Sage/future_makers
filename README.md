@@ -32,7 +32,7 @@ We have several examples for you to look at:
 ### Running the examples
 1. Double-click on any file you are interested in
 1. You'll need a subscription key, one of the Sage volunteers will be able to provide you with one 
-1. Replace the placeholder **SUBSCRIPTION_KEY** in the source code file (within the make_api_request method)
+1. Just replace the variable **subscription_key** in the `constants.py` file
 1. You may also have to change the host name (eg westcentralus.api.cognitive.microsoft.com) to match your Azure service
 1. Click the Debug menu (at the top) and choose Start Debugging -> Python
 1. Optional - try setting a breakpoint
@@ -45,6 +45,11 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
 1. Drag the ngrok.exe to your desktop
 1. Open Command Prompt (Start -> Run -> cmd)
 1. Change to the Desktop folder (`cd %USERPROFILE%\Desktop`)
+1. Open the ngrok Get Started [page](https://dashboard.ngrok.com/get-started)
+1. Your authtoken is shown in the example commands
+1. Run the two commands (**remove the ./ from the front**):
+    * ngrok authtoken YOUR_AUTH_TOKEN_HERE
+    * ngrok http 3001
 1. Run the command (**remove the ./ from the front**):
     * ngrok.exe http 3001
 1. Leave the command open (you can minimise the window)
