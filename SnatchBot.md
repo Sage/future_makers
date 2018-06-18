@@ -3,8 +3,8 @@
 
 We've broken the instructions down into three main areas
 
-[Getting Started](#Getting-Started)
-[User responses](#User-responses)
+1. [Getting Started](#Getting-Started)
+1. [User responses](###User-responses)
 
 ### Getting Started
 After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
