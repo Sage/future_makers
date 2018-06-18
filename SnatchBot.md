@@ -39,3 +39,19 @@ In the Image above you can see that I've built out two more Bot Statements calle
 ![welcome-stepone](https://user-images.githubusercontent.com/39263870/41417853-634370bc-6fe6-11e8-8c82-7a121dd72427.png)
 
 Using this idea of connections its possible to build it the ChatBot and you can then include the other interactions that we spoke about earlier. 
+
+### User responses 
+
+When building your Chatbot, it's likely that at some point you'll want your bot to make reference to something the user has told your bot. Lets say your bot asks the user their name, you might want it to refer to the user by name from then on. In order to do this, Snatchbot uses something called **Prior Responses**. The tool is located directly above the Bot's message. 
+
+![priorresponses](https://user-images.githubusercontent.com/39263870/41533102-809bfb58-72f1-11e8-9135-3f8c405cd2d9.png)
+
+This drop down menu gives you the commands that will pull the user responses. These commands need to go within the square brackets [].
+
+[ResponseTo interaction=ID fallback=TEXT] is the command you will need. 
+
+This function takes the response text from an Interaction that you specify by using its ID number. So, for example, [ResponseTo interaction= 285344] takes the response from the Interaction number 285344. You’ll find the interaction ID list for your current bot at the top right of your Interaction editing window.
+
+![interactionsdropdown](https://user-images.githubusercontent.com/39263870/41533623-5cbe718c-72f3-11e8-9cce-321b1a314937.png)
+
+The response data that is used will be the whole of the user's response. Within the command you can also see 'fallback=text', this is the text the user will recieve if something goes wrong, such as the ID being non-exsistent or there being no response. You should change it from 'TEXT' to something more appropriate like 'Sorry, something went wrong. We should start again'
