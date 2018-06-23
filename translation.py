@@ -14,6 +14,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 
+    _data = "";
+
     """
     Handles the GET request, sends to translate method and returns a response formatted
     for Chatfuel
@@ -36,8 +38,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """
     def translate(self):
         print("We're doing translation")
-        text = self.get_param_from_url("text")
-        lang = self.get_param_from_url("lang")
+        text = self.get_param_from_url("incoming_message")
+        lang = "en-gb"
         returned = self.make_api_request(text, lang)
         return returned
 
@@ -66,9 +68,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def get_param_from_url(self, param_name):
         queryStarts = self.path.find("?") + 1
-        from urllib.parse import parse_qs
-        parsed = parse_qs(self.path[queryStarts:])
-        return parsed[param_name][0]
+        if self.__data == "":
+            self.__data = self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8")
+        
+         from urllib.parse import parse_qs
+         parsed = parse_qs(self.path[queryStarts:])
+         parsed = parse_qs(self.__data)
+         return parsed[param_name][0]
 
 
 httpd = socketserver.TCPServer(('', 3001), Handler)
