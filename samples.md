@@ -38,7 +38,8 @@ Ngrok provides a tunnel to your local machine so that it can receive messages fr
     * ngrok.exe http 3001
 1. Leave the command open (you can minimise the window)
 
-If you've followed this instructions correctly then your command prompt window should look like this!
+If you've followed this instructions correctly then your command prompt window should look like this!  
+
 ![ngrok](https://user-images.githubusercontent.com/39263870/42217920-dddcf1d6-7ebe-11e8-8399-fd10dc2aa6d3.png)
 
-You'll also 
+The arrow in the above image is highlighting the "API Address", you will need this later for SnatchBot.
