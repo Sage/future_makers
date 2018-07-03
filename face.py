@@ -14,23 +14,25 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 
+
+    __data = "";
+    
     """
     Handles the GET request, sends to vision method and returns a response formatted
     for Chatfuel
     """
-    def do_GET(self):
+    def do_POST(self):
         print(self.path)
 
-        if (self.path == '/favicon.ico'):
-            return
 
         people = self.face_recognition()
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
-        self.wfile.write(str.encode("{\"messages\" : ["))
-        self.wfile.write(str.encode("{\"text\" : \"There are %s people\" }" % len(people)))
-        self.wfile.write(str.encode("]}"))
+        self.wfile.write(str.encode("{\"user_id\" : \"" + self.get_param_from_url("user_id") +"\","))
+        self.wfile.write(str.encode("\"bot_id\" : \"" + self.get_param_from_url("bot_id") +"\","))
+        self.wfile.write(str.encode("\"module_id\" : \"" + self.get_param_from_url("module_id") +"\","))
+        self.wfile.write(str.encode("\"message\" : \"" + people +"\"}"))
         return
 
     """
@@ -59,7 +61,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,
         }
-        conn = http.client.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
+        conn = http.client.HTTPSConnection('northeurope.api.cognitive.microsoft.com')
         conn.request("POST", "/face/v1.0/detect?%s" % params, body, headers)
         response = conn.getresponse()
         data = response.read()
@@ -68,9 +70,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return parsed
 
     def get_param_from_url(self, param_name):
-        queryStarts = self.path.find("?") + 1
+        if self.__data == "":
+            self.__data = self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8")
+        
         from urllib.parse import parse_qs
-        parsed = parse_qs(self.path[queryStarts:])
+        parsed = parse_qs(self.__data)
         return parsed[param_name][0]
 
 

@@ -15,20 +15,24 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 
+
+    __data = "";
+
     """
-    Handles the GET request, sends to vision method and returns a response formatted
-    for Chatfuel
+    Handles the POST request, sends to vision method and returns a response formatted
+    for SnatchBot
     """
-    def do_GET(self):
+    def do_POST(self):
         print(self.path)
 
         description = self.vision()
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
-        self.wfile.write(str.encode("{\"messages\" : ["))
-        self.wfile.write(str.encode("{\"text\" : \" this is " + description +"\" }"))
-        self.wfile.write(str.encode("]}"))
+        self.wfile.write(str.encode("{\"user_id\" : \"" + self.get_param_from_url("user_id") +"\","))
+        self.wfile.write(str.encode("\"bot_id\" : \"" + self.get_param_from_url("bot_id") +"\","))
+        self.wfile.write(str.encode("\"module_id\" : \"" + self.get_param_from_url("module_id") +"\","))
+        self.wfile.write(str.encode("\"message\" : \"" + description +"\"}"))
         return
 
     """
@@ -37,7 +41,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """
     def vision(self):
         print("we're doing vision checks")
-        image_url = self.get_param_from_url("image")
+        image_url = self.get_param_from_url("incoming_message")
         params = urllib.parse.urlencode({
             'visualFeatures': 'Description',
             'language': 'en',
@@ -50,12 +54,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = 'SUBSCRIPTION_KEY'
+        subscription_key = 'RELPACE_WITH_KEY'
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,
         }
-        conn = http.client.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
+        conn = http.client.HTTPSConnection('northeurope.api.cognitive.microsoft.com')
         conn.request("POST", "/vision/v1.0/analyze?%s" % params, body, headers)
         response = conn.getresponse()
         data = response.read()
@@ -67,11 +71,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Helper method to pull a param from a URL
     """
     def get_param_from_url(self, param_name):
-        queryStarts = self.path.find("?") + 1
+        if self.__data == "":
+            self.__data = self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8")
+        
         from urllib.parse import parse_qs
-        parsed = parse_qs(self.path[queryStarts:])
+        parsed = parse_qs(self.__data)
         return parsed[param_name][0]
 
 
-httpd = socketserver.TCPServer(('', 3001), Handler)
+httpd = socketserver.TCPServer(('', 3002), Handler)
 httpd.serve_forever()
