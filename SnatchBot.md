@@ -3,7 +3,7 @@
 
 We've broken the instructions down into three main areas
 
-1. [Getting Started](#getting-Started)
+1. [Getting Started](#getting-started)
 1. [User responses](#user-responses)
 1. [Connecting to an API](#connecting-to-an-api)
 
@@ -82,4 +82,9 @@ Bot: Hello! What is your name?
 
 ### Connecting to an API
 
+1.  In order to connect your Snatchbot to an API you will first need to run Ngrok. You can find out what Ngrok is and how to run it on the laptop you are using [here](samples.md).
+
+1.  After you've got Ngrok running correctly (If you're having problems getting Ngrok running, grab one of the volunteers), then you'll want to add the "JSON API" interaction within SnatchBot. 
+
+1.  You'll then need to provide SnatchBot with the address of your API. Your address can be found within the command prompt window you are using to run Ngrok. We highlighted where to find the address in the same place we describe how to get Ngrok running. 
 
