@@ -27,7 +27,7 @@ We have several examples for you to look at:
 1. Optional - try setting a breakpoint
 
 ### Ngrok
-Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to runs    this to be able to connect Chatfuel to the code running on your machine.
+Ngrok provides a tunnel to your local machine so that it can receive messages from the internet. You'll need to runs this to be able to connect SnatchBot to the code running on your machine.
 
 1. Download this [zip file](https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip) to your desktop
 1. Double-click on the zip file
