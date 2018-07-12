@@ -19,7 +19,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     
     """
     Handles the GET request, sends to vision method and returns a response formatted
-    for Chatfuel
+    for SnatchBot
     """
     def do_POST(self):
         print(self.path)
@@ -32,7 +32,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(str.encode("{\"user_id\" : \"" + self.get_param_from_url("user_id") +"\","))
         self.wfile.write(str.encode("\"bot_id\" : \"" + self.get_param_from_url("bot_id") +"\","))
         self.wfile.write(str.encode("\"module_id\" : \"" + self.get_param_from_url("module_id") +"\","))
-        self.wfile.write(str.encode("\"message\" : \"" + people +"\"}"))
+        self.wfile.write(str.encode("\"message\" : \"" + str(people [0]['faceAttributes']['gender']) +"\"}"))
         return
 
     """
@@ -41,7 +41,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     """
     def face_recognition(self):
         print("We're doing facial recognition")
-        image_url = self.get_param_from_url("image")
+        image_url = self.get_param_from_url("incoming_message")
         params = urllib.parse.urlencode({
             'returnFaceId': 'true',
             'returnFaceLandmarks': 'false',
@@ -56,7 +56,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = 'SUBSCRIPTION_KEY'
+        subscription_key = 'REPLACE_WITH_KEY'
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,
