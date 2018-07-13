@@ -6,6 +6,7 @@ We've broken the instructions down into three main areas
 1. [Getting Started](#getting-started)
 1. [User responses](#user-responses)
 1. [Connecting to an API](#connecting-to-an-api)
+1. [Plugins](#snatchbot-plugins)
 
 ### Getting Started
 After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
@@ -87,4 +88,6 @@ Bot: Hello! What is your name?
 1.  After you've got Ngrok running correctly (If you're having problems getting Ngrok running, grab one of the volunteers), then you'll want to add the "JSON API" interaction within SnatchBot. 
 
 1.  You'll then need to provide SnatchBot with the address of your API. Your address can be found within the command prompt window you are using to run Ngrok. We highlighted where to find the address in the same place we describe how to get Ngrok running. 
+
+### SnatchBot Plugins
 
