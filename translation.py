@@ -7,29 +7,31 @@ import urllib.parse
 import urllib.request
 import ssl
 from xml.etree import ElementTree
-import http.client, urllib.request, urllib.parse
+import http.client, urllib.request, urllib.parse, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 
-    _data = "";
+    __data = "";
 
     """
     Handles the GET request, sends to translate method and returns a response formatted
     for Chatfuel
     """
-    def do_GET(self):
+    def do_POST(self):
         print(self.path)
 
         description = self.translate()
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
-        self.wfile.write(str.encode("{\"messages\" : ["))
-        self.wfile.write(str.encode("{\"text\" : \"" + description + "\" }"))
-        self.wfile.write(str.encode("]}"))
+
+        self.wfile.write(str.encode("{\"user_id\" : \"" + self.get_param_from_url("user_id") +"\","))
+        self.wfile.write(str.encode("\"bot_id\" : \"" + self.get_param_from_url("bot_id") +"\","))
+        self.wfile.write(str.encode("\"module_id\" : \"" + self.get_param_from_url("module_id") +"\","))
+        self.wfile.write(str.encode("\"message\" : \"" + str(description[0]['translations'][0]['text']) +"\"}"))
         return
 
     """
@@ -39,7 +41,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def translate(self):
         print("We're doing translation")
         text = self.get_param_from_url("incoming_message")
-        lang = "en-gb"
+        lang = "de"
         returned = self.make_api_request(text, lang)
         return returned
 
@@ -47,35 +49,35 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, text, lang):
-        subscriptionKey = 'SUBSCRIPTION_KEY'
+        subscriptionKey = 'SUBSCRIPTION_KEY_HERE'
 
-        host = 'api.microsofttranslator.com'
-        path = '/V2/Http.svc/Translate'
+        host = 'api.cognitive.microsofttranslator.com'
+        path = '/translate?api-version=3.0'
 
-        params = '?to=' + lang + '&text=' + urllib.parse.quote(text)
+        params = '&to=' + lang
 
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey, 'Content-Type' : 'application/json'}
         conn = http.client.HTTPSConnection(host)
-        conn.request ("GET", path + params, None, headers)
+
+
+        body = "[{'Text':'" + text + "'}]"   #urllib.parse.quote(text)
+        conn.request ("POST", path + params, body, headers)
         response = conn.getresponse ()
-        result = response.read()
 
-        result = result.decode("utf-8")
-
-        translation = ElementTree.fromstring(result).text
-        return translation
-
+        data = response.read()
+        parsed = json.loads(data)
+        conn.close()
+        return parsed
 
     def get_param_from_url(self, param_name):
         queryStarts = self.path.find("?") + 1
         if self.__data == "":
             self.__data = self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8")
-        
-         from urllib.parse import parse_qs
-         parsed = parse_qs(self.path[queryStarts:])
-         parsed = parse_qs(self.__data)
-         return parsed[param_name][0]
+        from urllib.parse import parse_qs
+        parsed = parse_qs(self.path[queryStarts:])
+        parsed = parse_qs(self.__data)
+        return parsed[param_name][0]
 
 
-httpd = socketserver.TCPServer(('', 3001), Handler)
+httpd = socketserver.TCPServer(('', 3002), Handler)
 httpd.serve_forever()
