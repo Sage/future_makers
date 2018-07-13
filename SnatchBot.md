@@ -3,9 +3,10 @@
 
 We've broken the instructions down into three main areas
 
-1. [Getting Started](#getting-Started)
+1. [Getting Started](#getting-started)
 1. [User responses](#user-responses)
 1. [Connecting to an API](#connecting-to-an-api)
+1. [Plugins](#snatchbot-plugins)
 
 ### Getting Started
 After setting up your account and logging in, you will be taken to the Dashboard and on the left hand side of the screen you will see the toolbar. It looks like this - 
@@ -81,5 +82,31 @@ Bot: Nice to meet you, Something has gone wrong. Let’s start over.
 Bot: Hello! What is your name?  
 
 ### Connecting to an API
+
+1.  In order to connect your Snatchbot to an API you will first need to run Ngrok. You can find out what Ngrok is and how to run it on the laptop you are using [here](samples.md).
+
+1.  After you've got Ngrok running correctly (If you're having problems getting Ngrok running, grab one of the volunteers), then you'll want to add the "JSON API" interaction within SnatchBot. 
+
+1.  You'll then need to provide SnatchBot with the address of your API. Your address can be found within the command prompt window you are using to run Ngrok. We highlighted where to find the address in the same place we describe how to get Ngrok running. 
+
+1.  When you have provided SnatchBot with the correct Ngrok address you'll want to run the code within Visual Studio. You can run the code by starting to "Debug". This is under the drop menu at the top of the screen. 
+
+1.  Select Python. If you have done this correctly then a terminal will open on the bottom half of the screen, this lets you know that the code is running. If you are having problems grab one of the volunteers. 
+
+### SnatchBot Plugins
+
+If you'd like to build your bot out a bit more then you can make use of another one of SnatchBots in-built features - Plugins. By now you will have noticed that next to interactions there is also a choice to select plugins. We add plugins the same way we add interactions but instead these result in a different outcome. Lets have a look at one of them.
+
+1.  We're going to add giphy to our chatbot. So we'll add giphy the same way we would add an interaction. Once we've added and selected giphy we'll be presented with this screen. 
+![untitled](https://user-images.githubusercontent.com/39263870/42686369-97ba7cec-868d-11e8-8201-24d43e78c618.png)
+As you can see, SnatchBot automatically fills in the messages that the Bot would send, you can change this if you'd like. Unlike interactions you can also see that along the top there are buttons for Step One, Step Two and Step Three. 
+
+1.  Before being able to use Giphy you'll have to make sure that you have a connection to the plugin. This is done the same was as you connect interactions to one another. 
+
+1.  When you have connected the interactions. You should test the bot to see the result the user would get. You should see something like this!
+![2](https://user-images.githubusercontent.com/39263870/42688687-3d10110a-8695-11e8-9e23-f9c9513ae3d2.png)
+
+1.  You now have a working Plugin! Give a play with some of the others and have a think about how they could be useful in your chatbot!
+
 
 
