@@ -89,6 +89,10 @@ Bot: Hello! What is your name?
 
 1.  You'll then need to provide SnatchBot with the address of your API. Your address can be found within the command prompt window you are using to run Ngrok. We highlighted where to find the address in the same place we describe how to get Ngrok running. 
 
+1.  When you have provided SnatchBot with the correct Ngrok address you'll want to run the code within Visual Studio. You can run the code by starting to "Debug". This is under the drop menu at the top of the screen. 
+
+1.  Select Python. If you have done this correctly then a terminal will open on the bottom half of the screen, this lets you know that the code is running. If you are having problems grab one of the volunteers. 
+
 ### SnatchBot Plugins
 
 If you'd like to build your bot out a bit more then you can make use of another one of SnatchBots in-built features - Plugins. By now you will have noticed that next to interactions there is also a choice to select plugins. We add plugins the same way we add interactions but instead these result in a different outcome. Lets have a look at one of them.
