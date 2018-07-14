@@ -15,7 +15,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 class Handler(http.server.SimpleHTTPRequestHandler):
 
 
-    __data = "";
+    __data = ""
     
     """
     Handles the GET request, sends to vision method and returns a response formatted
