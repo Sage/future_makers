@@ -5,4 +5,6 @@ Welcome the the Sage Future Makers Github repository. Here you'll find all the r
 We've split the resources into two areas:
 
 * python_examples: Python files to build on
-* instructions: tutorials on setting up 
+* instructions: tutorials on setting up the tools we will need.
+
+The main workshop instruction sheet is in instructions/WorkshopInstructions.pdf.
