@@ -1,6 +1,16 @@
 ## SnatchBot
 [Snatchbot](https://snatchbot.me/) is the online software that we will be using to build and test the ChatBots. They have already built out documentation to help users with creating their own ChatBot, this can be found [here](https://support.snatchbot.me/docs). However, we have also given instructions below on how to complete some of the simpler tasks and as a quick guide. 
 
+## Bot Examples
+
+To get started using some bots, take a look at these examples:
+
+* [Mitskuku - the world's most humanlike chatbot](https://www.pandorabots.com/mitsuku/)
+* [DoNotPay - chatbot which helps you appeal parkign tickets](https://www.donotpay.com/parking)
+* [10 other examples of interesting and useful chatbots](https://www.inc.com/larry-kim/10-examples-of-how-brands-are-using-chatbots-to-de.html)
+
+
+
 We've broken the instructions down into three main areas
 
 1. [Getting Started](#getting-started)
