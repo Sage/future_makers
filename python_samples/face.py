@@ -56,7 +56,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = 'REPLACE_WITH_KEY'
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,

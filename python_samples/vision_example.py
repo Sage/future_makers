@@ -6,7 +6,7 @@
 # pip install Pillow
 
 
-import requests
+import requests, os
 # If you are using a Jupyter notebook, uncomment the following line.
 #%matplotlib inline
 import matplotlib.pyplot as plt
@@ -15,7 +15,11 @@ from PIL import Image
 from io import BytesIO
 
 # Replace <Subscription Key> with your valid subscription key.
-subscription_key = "aad7bea497924d50862e2a44295cff02"
+if 'VISION_KEY' in os.environ:
+    subscription_key = os.environ['VISION_KEY']
+else:
+    print('Environment variable for VISION_KEY is not set.')
+    exit()
 assert subscription_key
 
 # You must use the same region in your REST call as you used to get your
@@ -25,7 +29,7 @@ assert subscription_key
 # Free trial subscription keys are generated in the westcentralus region.
 # If you use a free trial subscription key, you shouldn't need to change
 # this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+vision_base_url = "https://northeurope.api.cognitive.microsoft.com/vision/v2.0/"
 
 analyze_url = vision_base_url + "analyze"
 

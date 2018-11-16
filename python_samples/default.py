@@ -23,7 +23,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Requset to Azure 
     """
     def make_api_request(self, params, body):
-        subscription_key = 'SUBSCRIPTION_KEY'
+      
         headers = {
          'Content-Type': 'application/json',
          'Ocp-Apim-Subscription-Key': subscription_key,

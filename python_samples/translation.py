@@ -49,7 +49,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     Method to send an API Request to Azure 
     """
     def make_api_request(self, text, lang):
-        subscriptionKey = 'SUBSCRIPTION_KEY_HERE'
 
         host = 'api.cognitive.microsofttranslator.com'
         path = '/translate?api-version=3.0'
