@@ -78,5 +78,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return parsed[param_name][0]
 
 
-httpd = socketserver.TCPServer(('', 3001), Handler)
+# Get the server ready and start listening
+port = 3001
+httpd = socketserver.TCPServer(('', port), Handler)
+print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
 httpd.serve_forever()

@@ -19,10 +19,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     __data = "";
 
-    """
-    Handles the POST request, sends to vision method and returns a response formatted
-    for SnatchBot
-    """
+    # This helper function formats parts of our response properly
+    def write(self,text):
+        self.wfile.write(str.encode(text))
 
     def _set_headers(self):
         self.send_response(200) # 200 means everything is OK
@@ -69,6 +68,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return parsed[param_name][0]
 
 
-httpd = socketserver.TCPServer(('', 3001), Handler)
-print('Server is listening...')
+# Get the server ready and start listening
+
+port = 3001
+httpd = socketserver.TCPServer(('', port), Handler)
+print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
 httpd.serve_forever()
