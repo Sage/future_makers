@@ -9,15 +9,27 @@ import urllib.request
 import ssl
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
+from helpers import *
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 subscription_key = get_environment_variable('FACE_RECOGNITION_KEY')
 
 class Handler(http.server.SimpleHTTPRequestHandler):
-
-
     __data = ""
+
+    def write(self,text):
+        self.wfile.write(str.encode(text))
+
+    def set_headers(self):
+        self.send_response(200) # 200 means everything is OK
+        self.send_header('Content-type', 'text/html') #Our response contains text
+        self.end_headers()
     
+    def do_GET(self):
+        self.set_headers()
+        self.write('Face detection server is listening.')
+
     """
     Handles the GET request, sends to vision method and returns a response formatted
     for SnatchBot
@@ -30,10 +42,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/json")
         self.end_headers()
-        self.wfile.write(str.encode("{\"user_id\" : \"" + self.get_param_from_url("user_id") +"\","))
-        self.wfile.write(str.encode("\"bot_id\" : \"" + self.get_param_from_url("bot_id") +"\","))
-        self.wfile.write(str.encode("\"module_id\" : \"" + self.get_param_from_url("module_id") +"\","))
-        self.wfile.write(str.encode("\"message\" : \"" + str(people [0]['faceAttributes']['gender']) +"\"}"))
+
+        user_id = self.get_param_from_url("user_id")
+        bot_id = self.get_param_from_url("bot_id")
+        module_id = self.get_param_from_url("module_id")
+
+        gender = str(people [0]['faceAttributes']['gender'])
+
+        self.write("{\"user_id\" : \"" + user_id +"\",")
+        self.write("\"bot_id\" : \"" + bot_id +"\",")
+        self.write("\"module_id\" : \"" + module_id +"\",")
+        self.write("\"message\" : \"" + gender +"\"}")
         return
 
     """
@@ -43,6 +62,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def face_recognition(self):
         print("We're doing facial recognition")
         image_url = self.get_param_from_url("incoming_message")
+        print('Processing image url ' + image_url)
         params = urllib.parse.urlencode({
             'returnFaceId': 'true',
             'returnFaceLandmarks': 'false',
@@ -69,6 +89,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         conn.close()
         return parsed
 
+    #This function gets a parameter from the incoming request
+    #The parameter is encoded in the URL of the incoming request
     def get_param_from_url(self, param_name):
         if self.__data == "":
             self.__data = self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8")
@@ -81,5 +103,5 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 # Get the server ready and start listening
 port = 3001
 httpd = socketserver.TCPServer(('', port), Handler)
-print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
+print('The server is now listening on port ' + str(port) + '. Visit localhost:' + str(port) +' in your browser!')
 httpd.serve_forever()

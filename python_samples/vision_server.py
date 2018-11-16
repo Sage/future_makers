@@ -9,13 +9,13 @@ import urllib.request
 import ssl
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
+from helpers import *
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 subscription_key = get_environment_variable('VISION_KEY')
 
-
 class Handler(http.server.SimpleHTTPRequestHandler):
-
 
     __data = "";
 
@@ -23,6 +23,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def write(self,text):
         self.wfile.write(str.encode(text))
 
+    def set_headers(self):
+        self.send_response(200) # 200 means everything is OK
+        self.send_header('Content-type', 'text/html') #Our response contains text
+        self.end_headers()
+    
+    def do_GET(self):
+        self.set_headers()
+        self.write('Vision server is listening.')
     """
     Handles the POST request, sends to vision method and returns a response formatted
     for SnatchBot
@@ -87,5 +95,5 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 port = 3001
 httpd = socketserver.TCPServer(('', port), Handler)
-print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
+print('The server is now listening on port ' + str(port) + '. Visit localhost:' + str(port) +' in your browser!')
 httpd.serve_forever()

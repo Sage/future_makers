@@ -12,10 +12,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-
-
 class Handler(http.server.SimpleHTTPRequestHandler):
-
 
     __data = "";
 
@@ -32,14 +29,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def write(self,text):
         self.wfile.write(str.encode(text))
 
-
-
     # This function will be called by the server when it receives a request
     # from a browser. Inside this function, we construct our response.
     def do_GET(self):
         print('Handling GET request...')
         self._set_headers()
-        self.write(self.reply)
+        self.write('Server is listening!')
         
     def do_POST(self):
         print('Handing POST request...')
@@ -72,5 +67,5 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 port = 3001
 httpd = socketserver.TCPServer(('', port), Handler)
-print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
+print('The server is now listening on port ' + str(port) + '. Visit localhost:' + str(port) +' in your browser!')
 httpd.serve_forever()

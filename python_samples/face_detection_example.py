@@ -36,7 +36,10 @@ params = urllib.parse.urlencode({
     'returnFaceAttributes': 'age,gender,smile,facialHair,glasses,emotion,makeup,accessories',
     #'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
 })
-body = "{'url':'https://timedotcom.files.wordpress.com/2015/01/benedict-cumberbatch.jpg'}"
+
+target_image_url = 'https://timedotcom.files.wordpress.com/2015/01/benedict-cumberbatch.jpg'
+
+body = "{'url': '" + target_image_url + "'}"
 returned = make_api_request(params, body)
 print(returned)
 

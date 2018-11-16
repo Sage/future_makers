@@ -9,8 +9,9 @@
 
 import os, requests, uuid, json
 
-subscription_key = get_environment_variable('TRANSLATOR_TEXT_KEY')
+from helpers import *
 
+subscription_key = get_environment_variable('TRANSLATOR_TEXT_KEY')
 
 # If you encounter any issues with the base_url or path, make sure
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
@@ -20,7 +21,7 @@ params = '&to=de&to=it&to=fr'
 constructed_url = base_url + path + params
 
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Key': subscription_key,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

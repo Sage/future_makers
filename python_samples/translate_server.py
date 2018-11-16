@@ -9,6 +9,8 @@ import ssl
 from xml.etree import ElementTree
 import http.client, urllib.request, urllib.parse, json
 
+from helpers import *
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 subscription_key = get_environment_variable('TRANSLATOR_TEXT_KEY')
@@ -21,6 +23,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def write(self,text):
         self.wfile.write(str.encode(text))
 
+    def set_headers(self):
+        self.send_response(200) # 200 means everything is OK
+        self.send_header('Content-type', 'text/html') #Our response contains text
+        self.end_headers()
+    
+    def do_GET(self):
+        self.set_headers()
+        self.write('Translation server is listening.')
     """
     Handles the GET request, sends to translate method and returns a response formatted
     for Chatfuel
@@ -47,7 +57,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def translate(self):
         print("We're doing translation")
         text = self.get_param_from_url("incoming_message")
-        lang = "de"
+        lang = "es"
         returned = self.make_api_request(text, lang)
         return returned
 
@@ -61,9 +71,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
         params = '&to=' + lang
 
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey, 'Content-Type' : 'application/json'}
+        headers = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type' : 'application/json'}
         conn = http.client.HTTPSConnection(host)
-
 
         body = "[{'Text':'" + text + "'}]"   #urllib.parse.quote(text)
         conn.request ("POST", path + params, body, headers)
@@ -85,8 +94,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 # Get the server ready and start listening
 
-port = 3002
+port = 3001
 httpd = socketserver.TCPServer(('', port), Handler)
-print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
+print('The server is now listening on port ' + str(port) + '. Visit localhost:' + str(port) +' in your browser!')
 
 httpd.serve_forever()
