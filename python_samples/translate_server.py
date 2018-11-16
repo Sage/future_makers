@@ -11,6 +11,7 @@ import http.client, urllib.request, urllib.parse, json
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
+subscription_key = get_environment_variable('TRANSLATOR_TEXT_KEY')
 
 class Handler(http.server.SimpleHTTPRequestHandler):
 

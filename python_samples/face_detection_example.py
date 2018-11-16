@@ -9,14 +9,11 @@ import urllib.request
 import ssl, os
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json
 
+from helpers import *
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
-if 'FACE_RECOGNITION_KEY' in os.environ:
-    subscription_key = os.environ['FACE_RECOGNITION_KEY']
-else:
-    print('Environment variable for FACE_RECOGNITION_KEY is not set.')
-    exit()
-
+subscription_key = get_environment_variable('FACE_RECOGNITION_KEY')
 
 def make_api_request(params, body):
     

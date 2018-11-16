@@ -14,13 +14,10 @@ import json
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-if 'VISION_KEY' in os.environ:
-    subscription_key = os.environ['VISION_KEY']
-else:
-    print('Environment variable for VISION_KEY is not set.')
-    exit()
-assert subscription_key
+from helpers import *
+
+subscription_key = get_environment_variable('VISION_KEY')
+
 
 # You must use the same region in your REST call as you used to get your
 # subscription keys. For example, if you got your subscription keys from

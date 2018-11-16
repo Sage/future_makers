@@ -28,13 +28,14 @@ class MyServer(http.server.SimpleHTTPRequestHandler):
     # This function will be called by the server when it receives a request
     # from a browser. Inside this function, we construct our response.
     def do_GET(self):
+        print('Responding to GET request...')
         self._set_headers()
         self.write('Hello!')
         
 # That's the end of our server class. Now we just need to make it run.
+port = 3003
+httpd = socketserver.TCPServer(('', port), MyServer) # Create a new server object
 
-httpd = socketserver.TCPServer(('', 3003), MyServer) # Create a new server object
-
-print('The server is now listening. Visit localhost:3003 in your browser!')
+print('The server is now listening on port ' + str(port) + '. Visit localhost:3003 in your browser!')
 httpd.serve_forever() # Start listening for requests
 
