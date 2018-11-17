@@ -32,7 +32,7 @@ analyze_url = vision_base_url + "analyze"
 
 # Set image_url to the URL of an image that you want to analyze.
 
-image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+image_url = "https://skylarkwarrior.files.wordpress.com/2017/09/badgers-011.jpg?w=640"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key }
 params  = {'visualFeatures': 'Categories,Description,Color'}

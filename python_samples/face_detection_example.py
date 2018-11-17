@@ -37,7 +37,7 @@ params = urllib.parse.urlencode({
     #'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',
 })
 
-target_image_url = 'https://timedotcom.files.wordpress.com/2015/01/benedict-cumberbatch.jpg'
+target_image_url = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Ed_Sheeran_2013.jpg/220px-Ed_Sheeran_2013.jpg'
 
 body = "{'url': '" + target_image_url + "'}"
 returned = make_api_request(params, body)

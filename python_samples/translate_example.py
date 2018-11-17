@@ -17,7 +17,7 @@ subscription_key = get_environment_variable('TRANSLATOR_TEXT_KEY')
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
 base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/translate?api-version=3.0'
-params = '&to=de&to=it&to=fr'
+params = '&to=de&to=it&to=fr&to=es'
 constructed_url = base_url + path + params
 
 headers = {
@@ -28,7 +28,7 @@ headers = {
 
 # You can pass more than one object in body.
 body = [{
-    'text' : "It's life, Jim, but not as we know it"
+    'text' : "Doughnuts is my middle name"
 }]
 request = requests.post(constructed_url, headers=headers, json=body)
 response = request.json()

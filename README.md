@@ -8,3 +8,8 @@ We've split the resources into two areas:
 * instructions: tutorials on setting up the tools we will need.
 
 The main workshop instruction sheet is in instructions/WorkshopInstructions.pdf.
+
+Your Snatcbot login details are
+
+email: sagefuturemakers+x@gmail.com, where x is your worksheet number
+password: sagefuturemakers
